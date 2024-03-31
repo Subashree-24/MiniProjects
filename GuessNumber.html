@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: pink;
+            padding: 0;
+            margin: 0;
+        }
+        h1{
+            text-align: center;
+        }
+        button{
+            background-color: green;
+            color: white;
+        }
+        div{
+            margin-top: 30px;
+            margin-left: 560px;
+        }
+    </style>
+<body>
+    <h1>Guess The Number</h1>
+    <div>
+    <label for="num1">Enter Number : </label>
+    <input name="num1" type="number" id="num1">
+    <button onclick="check()">Check</button>
+
+    <p id="result">You are Right/Wrong</p>
+    <p id="score">Your Score: 10</p>
+</div>
+    <script>  
+        var num = document.getElementById("num1")
+        var result = document.getElementById("result")
+        var score = document.getElementById("score")
+
+        var randomnum = Math.floor(Math.random()*10)+1
+        var totalscore = 10
+
+        //use console.log to check the number
+       
+        function check(){
+           
+            var guesssnum = num.value
+            
+            if(randomnum == guesssnum){
+                result.textContent = "Right"
+                alert("You Won!!")
+            }
+            else{
+                totalscore=totalscore-1
+                score.textContent = "Score: "+totalscore
+                result.textContent = "Wrong"
+            }
+        }
+    </script>
+</body>
+</html>
