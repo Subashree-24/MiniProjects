@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <title>Registration</title>
+        <style>
+            td,th{
+                border: 1px solid;
+                padding: 5px;
+            }
+    
+            button{
+                width: 100%;
+                padding: 5px;
+                background-color: aqua;
+            }
+    
+            .select-options{
+                width: 100%;
+            }
+    
+            label{
+                font-weight: bold;
+            }
+            
+            table{
+                padding: 5px;
+            }
+        </style>
+      </head>
+      <body>
+        <h1>Student Form</h1>
+        <form id="studentForm">
+          <table style="border: 1px solid black;">
+            <tr>
+                <td><label for="uname">Name: </label> </td>
+                <td><input type="text" id="uname" name="uname" ></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age: </label> </td>
+                <td><input type="number" id="age" name="age"></td>
+            </tr>
+          <tr>
+                <td><label for="Gender">Gender: </label> </td>
+                <td>
+                    Male
+<input type="radio" name="Gender" id="Gender1">
+Female
+<input type="radio" name="Gender" id="Gender2">
+
+                </td>
+            </tr>
+            <tr>
+                <td><label>Course: </label> </td>
+                <td>
+                    <select class="select-options">
+                        <option>CSE</option>
+                        <option>IT</option>
+                        <option>ECE</option>
+                    </select>
+               </td>
+           </tr>
+            <tr>
+                <td><label for="emails">Email</label> </td>
+                <td><input type="email" name="emails" id="emails"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button onclick="adding(event)">Save</button></td>
+            </tr>
+       
+          </table>
+        </form>
+        <h2>Submitted Records</h2>
+        <table id="recordsTable">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th id="actions">Action</th>
+            </tr>
+            <!-- Records will be added here -->
+        </table>
+        <script>
+    
+    
+            function adding(event){
+                var uname = document.getElementById("uname").value
+            var age = document.getElementById("age").value
+           var gender = document.querySelector('input[name="Gender"]:checked').value;
+           var Course = document.querySelector(".select-options").value;
+            var email = document.getElementById("emails").value
+            var action = document.getElementById("action")    
+
+            var table = document.getElementById("recordsTable");
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+
+            cell1.textContent = uname;
+            cell2.textContent = age;
+            cell3.textContent = gender;
+            cell4.textContent = Course;
+            cell5.textContent = email;
+           
+            var deleteButton = document.createElement("button")
+            
+        deleteButton.textContent = "Delete";
+        deleteButton.onclick = function() {
+            // Remove the row on delete button click
+            table.deleteRow(row.rowIndex);
+        };
+        cell6.appendChild(deleteButton);
+
+            event.preventDefault();
+       
+            document.getElementById("studentForm").reset();
+            // Clear the form for the next entry
+
+        }
+        function deleteContent(){
+
+        }
+     
+
+    
+        </script>
+      </body>
+    </html>
+    
+  </body>
+</html>
+

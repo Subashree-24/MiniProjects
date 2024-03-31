@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do DO</title>
+    <style>
+        input{
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>
+        To Do List App
+    </h1>
+    <input type="text" id="inputs">
+    <button onclick="adding()">Add</button>
+
+    <ul id="list-items">
+        <li> Sticky Notes
+            <button onclick="deleteItems(event)">Delete</button>
+        </li>
+    </ul>
+
+    <script>
+        var inputs = document.getElementById("inputs")
+        var createlist = document.querySelector("#list-items");
+
+        function adding(){
+            var listadd = document.createElement("li")
+            listadd.innerHTML = inputs.value + " <button onclick='deleteItems(event)'> Delete</button>"
+            //here pass '' if ""passed then use \
+            createlist.append(listadd)
+
+        }
+
+        function deleteItems(event){
+            //parentElement of the targeted btn is li so that particular li is deleted
+            event.target.parentElement.remove()
+        }
+    </script>
+</body>
+</html>
